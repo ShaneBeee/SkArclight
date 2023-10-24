@@ -4,6 +4,7 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
 import com.shanebeestudios.arc.api.data.ModEntityType;
 import com.shanebeestudios.arc.api.data.ModdedAliases;
+import com.shanebeestudios.arc.api.util.Util;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
@@ -16,19 +17,23 @@ public class SkArclight extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        long start = System.currentTimeMillis();
         if (instance != null) {
             throw new IllegalStateException("SkArclight already has an instance running.");
         }
         instance = this;
 
         this.addon = Skript.registerAddon(this);
-        ModdedAliases.setupAliases();
-        ModEntityType.init();
+        ModdedAliases.registerCustomAliases();
+        ModEntityType.registerCustomEntityTypes();
         try {
             this.addon.loadClasses("com.shanebeestudios.arc.elements");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        long finish = System.currentTimeMillis() - start;
+        Util.log("Finished loading in &a%s&7ms", finish);
     }
 
     @Override

@@ -16,19 +16,26 @@ public class ModEntityType {
     private static final Map<String, ModEntityType> KEY_MAP = new HashMap<>();
     private static final Map<EntityType, ModEntityType> ENTITY_TYPE_MAP = new HashMap<>();
 
-    public static void init() {
-        Util.log("&aRegistering Custom Entity Types:");
+    public static void registerCustomEntityTypes() {
+        Util.log("Registering Custom EntityTypes...");
+        int mcCount = 0;
+        int modCount = 0;
         for (EntityType entityType : EntityType.values()) {
             if (entityType == EntityType.UNKNOWN) continue;
             NamespacedKey key = entityType.getKey();
 
             String keyString = key.toString();
-            Util.log("&7- &b" + keyString);
-
             ModEntityType mod = new ModEntityType(entityType);
             KEY_MAP.put(keyString, mod);
             ENTITY_TYPE_MAP.put(entityType, mod);
+            if (key.getNamespace().contains("minecraft")) {
+                mcCount++;
+            } else {
+                modCount++;
+            }
         }
+        Util.log("Registered &b%s &7Minecraft EntityTypes", mcCount);
+        Util.log("Registered &b%s &7Modded EntityTypes", modCount);
     }
 
     public static ModEntityType parse(String string) {

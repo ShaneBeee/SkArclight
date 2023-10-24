@@ -4,6 +4,7 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.aliases.Aliases;
 import ch.njol.skript.aliases.AliasesProvider;
 import ch.njol.skript.aliases.InvalidMinecraftIdException;
+import com.shanebeestudios.arc.api.util.Util;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 
@@ -14,8 +15,11 @@ public class ModdedAliases {
     /**
      * Register aliases for modded items
      */
-    public static void setupAliases() {
+    public static void registerCustomAliases() {
+        Util.log("Registering custom aliases...");
         AliasesProvider addonProvider = Aliases.getAddonProvider(Skript.getAddonInstance());
+        int aliasStartCount = addonProvider.getAliasCount();
+
         for (Material material : Material.values()) {
             if (material.isLegacy()) continue;
             NamespacedKey key = material.getKey();
@@ -31,6 +35,7 @@ public class ModdedAliases {
             } catch (InvalidMinecraftIdException ignore) {
             }
         }
+        Util.log("Registered &b%s&7 custom aliases", (addonProvider.getAliasCount() - aliasStartCount));
     }
 
 }
