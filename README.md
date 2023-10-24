@@ -8,6 +8,11 @@ SkArclight is a Skript addon to be used on [**Arclight**](https://github.com/Izz
 - Adds a few syntaxes to get/spawn custom entities.
 - MORE TO COME!
 
+# Requirements:
+- [Skript 2.6.4+](https://github.com/SkriptLang/Skript)
+- Java 17+
+- [Arclight server](https://github.com/IzzelAliz/Arclight) (I'm not sure which versions this works on, but tested on 1.18.2)
+
 # Wiki:
 Check out the [**Wiki**](https://github.com/ShaneBeee/SkArclight/wiki) for usages and examples.
 
