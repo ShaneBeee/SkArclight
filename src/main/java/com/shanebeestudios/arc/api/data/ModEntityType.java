@@ -17,7 +17,6 @@ public class ModEntityType {
     private static final Map<EntityType, ModEntityType> ENTITY_TYPE_MAP = new HashMap<>();
 
     public static void registerCustomEntityTypes() {
-        Util.log("Registering Custom EntityTypes...");
         int mcCount = 0;
         int modCount = 0;
         for (EntityType entityType : EntityType.values()) {

@@ -16,7 +16,6 @@ public class ModdedAliases {
      * Register aliases for modded items
      */
     public static void registerCustomAliases() {
-        Util.log("Registering custom aliases...");
         AliasesProvider addonProvider = Aliases.getAddonProvider(Skript.getAddonInstance());
         int aliasStartCount = addonProvider.getAliasCount();
 
@@ -35,7 +34,7 @@ public class ModdedAliases {
             } catch (InvalidMinecraftIdException ignore) {
             }
         }
-        Util.log("Registered &b%s&7 custom aliases", (addonProvider.getAliasCount() - aliasStartCount));
+        Util.log("Registered &b%s&7 Modded Item Aliases", (addonProvider.getAliasCount() - aliasStartCount));
     }
 
 }
