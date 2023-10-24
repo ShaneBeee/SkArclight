@@ -26,7 +26,6 @@ public class SkArclight extends JavaPlugin {
         ModEntityType.init();
         try {
             this.addon.loadClasses("com.shanebeestudios.arc.elements");
-            this.addon.setLanguageFileDirectory("lang");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
