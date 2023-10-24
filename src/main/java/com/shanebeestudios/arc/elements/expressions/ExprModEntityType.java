@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
         "set {_e} to mod entity type of {_entity}",
         "if mod entity type of target entity = tfc:turkey:",
         "if mod entity type of target entity = minecraft:cow:"})
-@Since("INSERT VERSION")
+@Since("1.0.0")
 public class ExprModEntityType extends SimplePropertyExpression<Entity, ModEntityType> {
 
     static {

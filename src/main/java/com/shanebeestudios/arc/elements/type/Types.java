@@ -20,7 +20,7 @@ public class Types {
                 .user("mod ?entity ?types?")
                 .name("Mod Entity Type")
                 .description("Represents the entity type of a modded entity.")
-                .since("INSERT VERSION")
+                .since("1.0.0")
                 .parser(new Parser<>() {
 
                     @SuppressWarnings("NullableProblems")

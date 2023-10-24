@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 @Description("Spawn a modded entity.")
 @Examples({"mod spawn tfc:turkey at player",
         "mod spawn tfc:dog at location(1,100,1)"})
-@Since("INSERT VERSION")
+@Since("1.0.0")
 public class EffModSpawnEntity extends Effect {
 
     static {
