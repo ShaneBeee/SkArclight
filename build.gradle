@@ -1,0 +1,59 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id 'java'
+}
+
+compileJava {
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+    options.encoding = 'UTF-8'
+}
+
+// SkArclight version
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+
+    // Paper
+    maven { url 'https://repo.papermc.io/repository/maven-public/' }
+
+    // Skript
+    maven { url 'https://repo.skriptlang.org/releases' }
+}
+
+dependencies {
+    // Paper
+    compileOnly("io.papermc.paper:paper-api:1.20.2-R0.1-SNAPSHOT")
+
+    // Skript
+    compileOnly(group: 'com.github.SkriptLang', name: 'Skript', version: '2.6.4') {
+        transitive = false
+    }
+
+    // commons-io
+    compileOnly("commons-io:commons-io:2.11.0")
+    compileOnly("org.apache.commons:commons-text:1.10.0")
+}
+
+build {
+    tasks.withType(JavaCompile).tap {
+        configureEach {
+            options.compilerArgs.add("-Xlint:unchecked")
+            options.compilerArgs.add("-Xlint:deprecation")
+        }
+    }
+}
+
+processResources {
+    filter ReplaceTokens, tokens: ["version": project.version]
+}
+
+// Run task to build jar to another spot
+tasks.register('server', Copy) {
+    from jar
+    // Change this to wherever you want your jar to build
+    into '/Users/ShaneBee/Desktop/Server/arclight/plugins/'
+}

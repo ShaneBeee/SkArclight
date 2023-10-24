@@ -1,0 +1,9 @@
+name: SkArclight
+main: com.shanebeestudios.arc.SkArclight
+version: '@version@'
+description: "A simple Skript addon to enhance your experience with Forge mods."
+api-version: '1.13'
+depend:
+  - Skript
+loadbefore:
+  - SkBee
