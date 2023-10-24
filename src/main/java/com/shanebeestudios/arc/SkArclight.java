@@ -2,8 +2,7 @@ package com.shanebeestudios.arc;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
-import com.shanebeestudios.arc.api.data.ModEntityType;
-import com.shanebeestudios.arc.api.data.ModdedAliases;
+import com.shanebeestudios.arc.api.data.SkriptRegistrations;
 import com.shanebeestudios.arc.api.util.Util;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
@@ -26,8 +25,7 @@ public class SkArclight extends JavaPlugin {
         instance = this;
 
         this.addon = Skript.registerAddon(this);
-        ModdedAliases.registerCustomAliases();
-        ModEntityType.registerCustomEntityTypes();
+        SkriptRegistrations.registerStuff();
         try {
             this.addon.loadClasses("com.shanebeestudios.arc.elements");
         } catch (IOException e) {
