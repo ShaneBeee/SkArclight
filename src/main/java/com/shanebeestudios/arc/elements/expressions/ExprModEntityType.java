@@ -25,7 +25,7 @@ public class ExprModEntityType extends SimplePropertyExpression<Entity, ModEntit
 
     @Override
     public @Nullable ModEntityType convert(Entity entity) {
-        return ModEntityTypes.fromEntity(entity);
+        return ModEntityType.fromEntity(entity);
     }
 
     @Override

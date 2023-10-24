@@ -2,6 +2,7 @@ package com.shanebeestudios.arc;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
+import com.shanebeestudios.arc.api.data.ModEntityType;
 import com.shanebeestudios.arc.api.data.ModdedAliases;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -22,7 +23,7 @@ public class SkArclight extends JavaPlugin {
 
         this.addon = Skript.registerAddon(this);
         ModdedAliases.setupAliases();
-        ModEntityTypes.init();
+        ModEntityType.init();
         try {
             this.addon.loadClasses("com.shanebeestudios.arc.elements");
             this.addon.setLanguageFileDirectory("lang");
