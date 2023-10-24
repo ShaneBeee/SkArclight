@@ -2,6 +2,7 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 compileJava {
@@ -42,6 +43,7 @@ dependencies {
 }
 
 build {
+    dependsOn(shadowJar)
     tasks.withType(JavaCompile).tap {
         configureEach {
             options.compilerArgs.add("-Xlint:unchecked")
@@ -54,9 +56,14 @@ processResources {
     filter ReplaceTokens, tokens: ["version": project.version]
 }
 
+shadowJar {
+    archiveClassifier = null
+    relocate("org.bstats", "com.shanebeestudios.arc.metrics")
+}
+
 // Run task to build jar to another spot
 tasks.register('server', Copy) {
-    from jar
+    from shadowJar
     // Change this to wherever you want your jar to build
     into '/Users/ShaneBee/Desktop/Server/arclight/plugins/'
 }
