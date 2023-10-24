@@ -3,6 +3,7 @@ main: com.shanebeestudios.arc.SkArclight
 version: '@version@'
 description: "A simple Skript addon to enhance your experience with Forge mods."
 api-version: '1.13'
+website: https://github.com/ShaneBeee/SkArclight
 depend:
   - Skript
 loadbefore:
