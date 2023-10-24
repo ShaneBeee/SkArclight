@@ -5,6 +5,8 @@ import ch.njol.skript.SkriptAddon;
 import com.shanebeestudios.arc.api.data.ModEntityType;
 import com.shanebeestudios.arc.api.data.ModdedAliases;
 import com.shanebeestudios.arc.api.util.Util;
+import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SimplePie;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
@@ -32,8 +34,15 @@ public class SkArclight extends JavaPlugin {
             throw new RuntimeException(e);
         }
 
+        registerBstatsMetrics();
+
         long finish = System.currentTimeMillis() - start;
         Util.log("Finished loading in &a%s&7ms", finish);
+    }
+
+    private void registerBstatsMetrics() {
+        Metrics metrics = new Metrics(this, 20137);
+        metrics.addCustomChart(new SimplePie("skript_version", () -> Skript.getVersion().toString()));
     }
 
     @Override
