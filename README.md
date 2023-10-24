@@ -11,5 +11,8 @@ SkArclight is a Skript addon to be used on [**Arclight**](https://github.com/Izz
 # Wiki:
 Check out the [**Wiki**](https://github.com/ShaneBeee/SkArclight/wiki) for usages and examples.
 
+# Docs:
+[![SkriptHubViewTheDocs](http://skripthub.net/static/addon/ViewTheDocsButton.png)](http://skripthub.net/docs/?addon=SkArclight)
+
 # Issues/Suggestions:
 Found an issue or have a suggestion, hope on over to the [**Issues**](https://github.com/ShaneBeee/SkArclight/issues) tab, create a new issue and go from there. Remember... the more details the better.
