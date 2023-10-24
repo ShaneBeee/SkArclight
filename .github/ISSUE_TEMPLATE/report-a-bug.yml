@@ -43,10 +43,19 @@ body:
 
   - type: input
     attributes:
+      label: Skript Version
+      description: Which version of Skript are you using?
+      placeholder: |
+        Ex: "2.7.1"
+    validations:
+      required: true
+
+  - type: input
+    attributes:
       label: Server Version
       description: Which version of the server and MC are you using?
       placeholder: |
-        Ex: "Paper 1.19.2"
+        Ex: "arclight-1.18.2-1.0.9-7a0a1946 (MC: 1.18.2)"
     validations:
       required: true
 
@@ -55,6 +64,6 @@ body:
       label: Additional Information
       description: Any additional information that may help us solve the bug.
       placeholder: |
-        Ex: "Using Spigot instead of Paper"
+        Ex: "I am using X mod"
     validations:
       required: false
