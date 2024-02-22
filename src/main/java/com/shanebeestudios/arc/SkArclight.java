@@ -4,6 +4,7 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
 import com.shanebeestudios.arc.api.data.SkriptRegistrations;
 import com.shanebeestudios.arc.api.util.Util;
+import com.shanebeestudios.arc.listeners.CommandListener;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -33,6 +34,9 @@ public class SkArclight extends JavaPlugin {
         }
 
         registerBstatsMetrics();
+
+        // Register Command Listener
+        getServer().getPluginManager().registerEvents(new CommandListener(this), this);
 
         long finish = System.currentTimeMillis() - start;
         Util.log("Finished loading in &a%s&7ms", finish);
