@@ -15,8 +15,11 @@ import java.util.function.Supplier;
 
 public class ModEntityType {
 
+    // Static Stuff
+
     private static final Map<String, ModEntityType> KEY_MAP = new HashMap<>();
     private static final Map<EntityType, ModEntityType> ENTITY_TYPE_MAP = new HashMap<>();
+    private static Supplier<Iterator<ModEntityType>> SUPPLIER;
 
     public static void registerCustomEntityTypes() {
         int mcCount = 0;
@@ -55,6 +58,15 @@ public class ModEntityType {
         return null;
     }
 
+    public static Supplier<Iterator<ModEntityType>> supplier() {
+        if (SUPPLIER == null) {
+            SUPPLIER = () -> ENTITY_TYPE_MAP.values().iterator();
+        }
+        return SUPPLIER;
+    }
+
+    // Class Stuff
+
     private final EntityType entityType;
 
     public ModEntityType(EntityType entityType) {
@@ -66,10 +78,6 @@ public class ModEntityType {
         if (world == null) return null;
 
         return world.spawnEntity(location, this.entityType);
-    }
-
-    public static Supplier<Iterator<ModEntityType>> supplier() {
-        return () -> ENTITY_TYPE_MAP.values().iterator();
     }
 
     @Override
