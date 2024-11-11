@@ -34,10 +34,6 @@ dependencies {
         transitive = false
     }
 
-    // commons-io
-    compileOnly("commons-io:commons-io:2.11.0")
-    compileOnly("org.apache.commons:commons-text:1.10.0")
-
     // bStats
     implementation(group: 'org.bstats', name: 'bstats-bukkit', version: '3.0.2')
 }
