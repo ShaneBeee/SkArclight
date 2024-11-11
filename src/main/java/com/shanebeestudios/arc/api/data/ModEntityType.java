@@ -8,8 +8,10 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
+import java.util.function.Supplier;
 
 public class ModEntityType {
 
@@ -64,6 +66,10 @@ public class ModEntityType {
         if (world == null) return null;
 
         return world.spawnEntity(location, this.entityType);
+    }
+
+    public static Supplier<Iterator<ModEntityType>> supplier() {
+        return () -> ENTITY_TYPE_MAP.values().iterator();
     }
 
     @Override

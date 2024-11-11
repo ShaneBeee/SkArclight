@@ -40,6 +40,7 @@ public class Types {
                         return modEntityType.toString();
                     }
                 })
+                .supplier(ModEntityType.supplier())
                 .serializer(new Serializer<>() {
                     @Override
                     public @NotNull Fields serialize(ModEntityType entityType) {
