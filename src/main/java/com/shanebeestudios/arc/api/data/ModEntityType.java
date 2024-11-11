@@ -29,7 +29,7 @@ public class ModEntityType {
             ModEntityType mod = new ModEntityType(entityType);
             KEY_MAP.put(keyString, mod);
             ENTITY_TYPE_MAP.put(entityType, mod);
-            if (key.getNamespace().contains("minecraft")) {
+            if (key.getNamespace().equalsIgnoreCase(NamespacedKey.MINECRAFT)) {
                 mcCount++;
             } else {
                 modCount++;
