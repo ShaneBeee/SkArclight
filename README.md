@@ -1,6 +1,6 @@
 # SkArclight
 
-SkArclight is a Skript addon to be used on [**Arclight**](https://github.com/IzzelAliz/Arclight) servers.     
+SkArclight is a Skript addon to be used on [**Arclight**](https://github.com/IzzelAliz/Arclight)/[**Mohist**](https://mohistmc.com) servers.     
 
 # Features:
 - Dynamically adds ItemTypes for all modded items (format: `mod_name:custom_item`, ex: `tfc:wood/lumber/acacia`)
@@ -11,7 +11,7 @@ SkArclight is a Skript addon to be used on [**Arclight**](https://github.com/Izz
 # Requirements:
 - [Skript 2.6.4+](https://github.com/SkriptLang/Skript)
 - Java 17+
-- [Arclight server](https://github.com/IzzelAliz/Arclight) (I'm not sure which versions this works on, but tested on 1.18.2)
+- [**Arclight**](https://github.com/IzzelAliz/Arclight)/[**Mohist**](https://mohistmc.com) server (I'm not sure which versions this works on, but tested on 1.18.2)
 
 # Wiki:
 Check out the [**Wiki**](https://github.com/ShaneBeee/SkArclight/wiki) for usages and examples.
