@@ -2,11 +2,13 @@ package com.shanebeestudios.arc;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
+import ch.njol.skript.util.Version;
 import com.shanebeestudios.arc.api.data.SkriptRegistrations;
 import com.shanebeestudios.arc.api.util.Util;
 import com.shanebeestudios.arc.listeners.CommandListener;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
@@ -19,6 +21,11 @@ public class SkArclight extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        if (Skript.getVersion().isSmallerThan(new Version(2, 9))) {
+            Skript.error("SkArclight requires Skript 2.9+ to run.");
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }
         long start = System.currentTimeMillis();
         if (instance != null) {
             throw new IllegalStateException("SkArclight already has an instance running.");
