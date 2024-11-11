@@ -9,9 +9,9 @@ SkArclight is a Skript addon to be used on [**Arclight**](https://github.com/Izz
 - MORE TO COME!
 
 # Requirements:
-- [Skript 2.6.4+](https://github.com/SkriptLang/Skript)
+- [Skript 2.9+](https://github.com/SkriptLang/Skript)
 - Java 17+
-- [**Arclight**](https://github.com/IzzelAliz/Arclight)/[**Mohist**](https://mohistmc.com) server (I'm not sure which versions this works on, but tested on 1.18.2)
+- [**Arclight**](https://github.com/IzzelAliz/Arclight)/[**Mohist**](https://mohistmc.com) server (I'm not sure which versions this works on, but tested on 1.18.2/1.20.1)
 
 # Wiki:
 Check out the [**Wiki**](https://github.com/ShaneBeee/SkArclight/wiki) for usages and examples.
