@@ -4,6 +4,7 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.aliases.Aliases;
 import ch.njol.skript.aliases.AliasesProvider;
 import ch.njol.skript.aliases.InvalidMinecraftIdException;
+import ch.njol.skript.util.Version;
 import com.shanebeestudios.arc.api.util.SkriptUtil;
 import com.shanebeestudios.arc.api.util.Util;
 import org.bukkit.Material;
@@ -18,7 +19,10 @@ public class SkriptRegistrations {
     public static void registerStuff() {
         registerCustomAliases();
         ModEntityType.registerCustomEntityTypes();
-        registerBiomes();
+        if (!Skript.getVersion().isLargerThan(new Version(2,9))) {
+            // In Skript 2.9+ biomes are dynamically registered via Registry
+            registerBiomes();
+        }
     }
 
     /**
