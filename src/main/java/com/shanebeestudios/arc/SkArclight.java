@@ -22,7 +22,7 @@ public class SkArclight extends JavaPlugin {
     @Override
     public void onEnable() {
         if (Skript.getVersion().isSmallerThan(new Version(2, 9))) {
-            Skript.error("SkArclight requires Skript 2.9+ to run.");
+            Util.skriptError("SkArclight requires Skript 2.9+ to run.");
             Bukkit.getPluginManager().disablePlugin(this);
             return;
         }
