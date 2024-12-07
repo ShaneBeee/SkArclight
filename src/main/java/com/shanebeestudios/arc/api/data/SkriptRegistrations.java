@@ -3,6 +3,7 @@ package com.shanebeestudios.arc.api.data;
 import ch.njol.skript.Skript;
 import ch.njol.skript.aliases.Aliases;
 import ch.njol.skript.aliases.AliasesProvider;
+import ch.njol.skript.aliases.AliasesProvider.AliasName;
 import ch.njol.skript.aliases.InvalidMinecraftIdException;
 import com.shanebeestudios.arc.api.util.Util;
 import org.bukkit.Material;
@@ -26,16 +27,16 @@ public class SkriptRegistrations {
 
         for (Material material : Material.values()) {
             if (material.isLegacy()) continue;
-            NamespacedKey key = material.getKey();
-            if (key.getNamespace().contains("minecraft")) continue;
+            NamespacedKey namespacedKey = material.getKey();
+            if (namespacedKey.getNamespace().contains("minecraft")) continue;
 
-            String name = key.toString();
-            AliasesProvider.AliasName aliasName = new AliasesProvider.AliasName(name, name, 0);
+            String name = namespacedKey.toString();
+            AliasName aliasName = new AliasName(name, name, 0);
 
-            // Arclight names items like "minecraft:mod_item"
-            String id = "minecraft:" + name.replace(":", "_");
+            // Arclight makes Material enums as MODNAME_ITEMNAME
+            String materialEnumName = name.replace(":", "_");
             try {
-                addonProvider.addAlias(aliasName, id, null, new HashMap<>());
+                addonProvider.addAlias(aliasName, materialEnumName, null, new HashMap<>());
             } catch (InvalidMinecraftIdException ignore) {
             }
         }
