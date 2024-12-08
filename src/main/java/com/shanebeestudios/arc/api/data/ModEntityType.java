@@ -31,6 +31,7 @@ public class ModEntityType {
             String keyString = key.toString();
             ModEntityType mod = new ModEntityType(entityType);
             KEY_MAP.put(keyString, mod);
+            KEY_MAP.put(keyString.replaceAll("[:/_]", " "), mod);
             ENTITY_TYPE_MAP.put(entityType, mod);
             if (key.getNamespace().equalsIgnoreCase(NamespacedKey.MINECRAFT)) {
                 mcCount++;
