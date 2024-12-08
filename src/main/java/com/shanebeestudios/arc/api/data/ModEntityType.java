@@ -7,6 +7,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
@@ -61,7 +62,9 @@ public class ModEntityType {
 
     public static Supplier<Iterator<ModEntityType>> supplier() {
         if (SUPPLIER == null) {
-            SUPPLIER = () -> ENTITY_TYPE_MAP.values().iterator();
+            SUPPLIER = () -> ENTITY_TYPE_MAP.values().stream()
+                .sorted(Comparator.comparing(ModEntityType::toString))
+                .iterator();
         }
         return SUPPLIER;
     }
