@@ -19,7 +19,10 @@ public class Types {
         Classes.registerClass(new ClassInfo<>(ModEntityType.class, "modentitytype")
             .user("mod ?entity ?types?")
             .name("Mod Entity Type")
-            .description("Represents the entity type of a modded entity.")
+            .description("Represents the entity type of a modded entity.",
+                "Keys will match whatever is provided by the mod.",
+                "You can use `send all mod entity types` to see what is available in Skript.",
+                "Keys with/without spaces/underscores/slashes are supported.")
             .since("1.0.0")
             .parser(new Parser<>() {
 

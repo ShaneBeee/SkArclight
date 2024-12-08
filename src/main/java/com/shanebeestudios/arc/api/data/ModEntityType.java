@@ -7,6 +7,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
@@ -31,6 +32,7 @@ public class ModEntityType {
             String keyString = key.toString();
             ModEntityType mod = new ModEntityType(entityType);
             KEY_MAP.put(keyString, mod);
+            KEY_MAP.put(keyString.replaceAll("[:/_]", " "), mod);
             ENTITY_TYPE_MAP.put(entityType, mod);
             if (key.getNamespace().equalsIgnoreCase(NamespacedKey.MINECRAFT)) {
                 mcCount++;
@@ -60,7 +62,9 @@ public class ModEntityType {
 
     public static Supplier<Iterator<ModEntityType>> supplier() {
         if (SUPPLIER == null) {
-            SUPPLIER = () -> ENTITY_TYPE_MAP.values().iterator();
+            SUPPLIER = () -> ENTITY_TYPE_MAP.values().stream()
+                .sorted(Comparator.comparing(ModEntityType::toString))
+                .iterator();
         }
         return SUPPLIER;
     }
