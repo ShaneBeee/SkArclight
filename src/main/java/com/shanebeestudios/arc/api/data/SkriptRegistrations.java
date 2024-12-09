@@ -40,6 +40,7 @@ public class SkriptRegistrations {
             try {
                 addonProvider.addAlias(aliasName, materialEnumName, null, new HashMap<>());
                 addonProvider.addAlias(aliasNameNoChar, materialEnumName, null, new HashMap<>());
+                Util.debug("Registered item alias for: &r'&b%s&r'", name);
             } catch (InvalidMinecraftIdException ignore) {
             }
         }

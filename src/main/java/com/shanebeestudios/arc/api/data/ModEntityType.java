@@ -38,6 +38,7 @@ public class ModEntityType {
                 mcCount++;
             } else {
                 modCount++;
+                Util.debug("Registered Modded EntityType for: &r'&b%s&r'", keyString);
             }
         }
         Util.log("Registered &b%s &7Minecraft EntityTypes", mcCount);
