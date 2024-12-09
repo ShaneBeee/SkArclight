@@ -18,22 +18,25 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Name("Spawn Modded Entity")
-@Description("Spawn a modded entity.")
+@Description({"Spawn a modded entity.",
+    "Keys with/without spaces/underscores/slashes are supported."})
 @Examples({"mod spawn tfc:turkey at player",
-        "mod spawn tfc:dog at location(1,100,1)"})
+    "mod spawn tfc:dog at location(1,100,1)",
+    "mod spawn tfc:chest_boat/chestnut at {_loc}",
+    "mod spawn tfc chest boat chestnut at {_loc}"})
 @Since("1.0.0")
 public class EffModSpawnEntity extends Effect {
 
     static {
         Skript.registerEffect(EffModSpawnEntity.class,
-                "mod[ded] spawn [%-number% of] %modentitytype% [%directions% %locations%]");
+            "mod[ded] spawn [%-number% of] %modentitytype% [%directions% %locations%]");
     }
 
     private Expression<Number> amount;
     private Expression<ModEntityType> type;
     private Expression<Location> location;
 
-    @SuppressWarnings({"NullableProblems", "unchecked"})
+    @SuppressWarnings({"unchecked"})
     @Override
     public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, ParseResult parseResult) {
         this.amount = (Expression<Number>) exprs[0];
@@ -42,7 +45,7 @@ public class EffModSpawnEntity extends Effect {
         return true;
     }
 
-    @SuppressWarnings({"NullableProblems", "DataFlowIssue"})
+    @SuppressWarnings({"DataFlowIssue"})
     @Override
     protected void execute(Event event) {
         int amount = this.amount != null ? this.amount.getSingle(event).intValue() : 1;

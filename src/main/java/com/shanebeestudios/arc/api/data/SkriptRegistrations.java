@@ -32,15 +32,21 @@ public class SkriptRegistrations {
 
             String name = namespacedKey.toString();
             AliasName aliasName = new AliasName(name, name, 0);
+            String nameNoChar = name.replaceAll("[:/_]", " ");
+            AliasName aliasNameNoChar = new AliasName(nameNoChar, nameNoChar, 0);
 
             // Arclight makes Material enums as MODNAME_ITEMNAME
             String materialEnumName = name.replace(":", "_");
             try {
                 addonProvider.addAlias(aliasName, materialEnumName, null, new HashMap<>());
+                addonProvider.addAlias(aliasNameNoChar, materialEnumName, null, new HashMap<>());
+                Util.debug("Registered item alias for: &r'&b%s&r'", name);
             } catch (InvalidMinecraftIdException ignore) {
             }
         }
-        Util.log("Registered &b%s&7 Modded Item Aliases", (addonProvider.getAliasCount() - aliasStartCount));
+        // Cut count in half since we're registering 2 names per item
+        int count = (addonProvider.getAliasCount() - aliasStartCount) / 2;
+        Util.log("Registered &b%s&7 Modded Item Aliases", count);
     }
 
 }

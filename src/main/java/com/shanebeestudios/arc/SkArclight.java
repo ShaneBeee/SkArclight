@@ -4,6 +4,7 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
 import ch.njol.skript.util.Version;
 import com.shanebeestudios.arc.api.data.SkriptRegistrations;
+import com.shanebeestudios.arc.api.util.MessageFilter;
 import com.shanebeestudios.arc.api.util.Util;
 import com.shanebeestudios.arc.listeners.CommandListener;
 import org.bstats.bukkit.Metrics;
@@ -18,9 +19,13 @@ public class SkArclight extends JavaPlugin {
 
     private static SkArclight instance;
     private SkriptAddon addon;
+    private final MessageFilter messageFilter = new MessageFilter();
 
     @Override
     public void onEnable() {
+        // Disable filter after Skript has loaded item Aliases
+        this.messageFilter.disable();
+
         if (Skript.getVersion().isSmallerThan(new Version(2, 9))) {
             Util.skriptError("SkArclight requires Skript 2.9+ to run.");
             Bukkit.getPluginManager().disablePlugin(this);
