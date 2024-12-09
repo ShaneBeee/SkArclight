@@ -34,6 +34,9 @@ dependencies {
         transitive = false
     }
 
+    // Logging
+    compileOnly("org.apache.logging.log4j:log4j-core:2.20.0")
+
     // bStats
     implementation(group: 'org.bstats', name: 'bstats-bukkit', version: '3.0.2')
 }
@@ -61,5 +64,5 @@ shadowJar {
 tasks.register('server', Copy) {
     from shadowJar
     // Change this to wherever you want your jar to build
-    into '/Users/ShaneBee/Desktop/Server/arclight/plugins/'
+    into '/Users/ShaneBee/Desktop/Server/Skript/mohist/plugins/'
 }
