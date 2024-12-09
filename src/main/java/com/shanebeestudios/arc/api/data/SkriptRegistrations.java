@@ -44,7 +44,9 @@ public class SkriptRegistrations {
             } catch (InvalidMinecraftIdException ignore) {
             }
         }
-        Util.log("Registered &b%s&7 Modded Item Aliases", (addonProvider.getAliasCount() - aliasStartCount));
+        // Cut count in half since we're registering 2 names per item
+        int count = (addonProvider.getAliasCount() - aliasStartCount) / 2;
+        Util.log("Registered &b%s&7 Modded Item Aliases", count);
     }
 
 }
