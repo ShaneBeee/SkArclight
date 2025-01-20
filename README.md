@@ -3,7 +3,19 @@
 SkArclight is a Skript addon to be used on [**Arclight**](https://github.com/IzzelAliz/Arclight)/[**Mohist**](https://mohistmc.com) servers.     
 
 # Features:
-- Dynamically adds ItemTypes for all modded items (format: `mod_name:custom_item`, ex: `tfc:wood/lumber/acacia`)
+- Dynamically adds ItemTypes for all modded items.    
+2 instances will be added, 1 just as the key of the item, 1 without special characters.    
+  - Format:
+    - `mod_name:mod_item`
+    - `mod name mod item`
+    - `mod_name:category/sub_item`
+    - `mod name category sub item`    
+  - Examples:
+    - `tfc:candle_cake/lime`
+    - `tfc candle cake lime`
+> [!WARNING]    
+> Skript will still send errors for missing ItemTypes.     
+> This happens before SkArclight loads and can be ignored.
 - ItemTypes also allow for custom BlockData to work as well.
 - Adds a few syntaxes to get/spawn custom entities.
 - MORE TO COME!
