@@ -6,8 +6,6 @@ plugins {
 }
 
 compileJava {
-    sourceCompatibility = '17'
-    targetCompatibility = '17'
     options.encoding = 'UTF-8'
 }
 
@@ -39,6 +37,10 @@ dependencies {
 
     // bStats
     implementation(group: 'org.bstats', name: 'bstats-bukkit', version: '3.0.2')
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ['-source', '' + 11, '-target', '' + 11]
 }
 
 build {
