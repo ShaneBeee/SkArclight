@@ -4,8 +4,10 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.log.ErrorQuality;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -68,6 +70,34 @@ public class Util {
     public static void skriptError(String format, Object... objects) {
         String error = String.format(format, objects);
         Skript.error(getColString(PREFIX_ERROR + error), ErrorQuality.SEMANTIC_ERROR);
+    }
+
+    /**
+     * Gets a Minecraft NamespacedKey from string
+     * <p>If a namespace is not provided, it will default to "minecraft:" namespace</p>
+     *
+     * @param key   Key for new Minecraft NamespacedKey
+     * @param error Whether to send a skript/console error if one occurs
+     * @return new Minecraft NamespacedKey
+     */
+    @Nullable
+    public static NamespacedKey getNamespacedKey(@Nullable String key, boolean error) {
+        if (key == null) return null;
+        if (!key.contains(":")) key = "minecraft:" + key;
+        if (key.length() > 255) {
+            if (error)
+                skriptError("An invalid key was provided, key must be less than 256 characters: %s", key);
+            return null;
+        }
+        key = key.toLowerCase();
+        if (key.contains(" ")) {
+            key = key.replace(" ", "_");
+        }
+
+        NamespacedKey namespacedKey = NamespacedKey.fromString(key);
+        if (namespacedKey == null && error)
+            skriptError("An invalid key was provided, that didn't follow [a-z0-9/._-:]. key: %s", key);
+        return namespacedKey;
     }
 
 }
