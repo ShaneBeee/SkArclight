@@ -16,6 +16,9 @@ public class SkriptRegistrations {
     public static void registerStuff() {
         registerCustomAliases();
         ModEntityType.registerCustomEntityTypes();
+        if (Skript.classExists("org.bukkit.Registry")) {
+            RegistryRegistration.init();
+        }
     }
 
     /**
