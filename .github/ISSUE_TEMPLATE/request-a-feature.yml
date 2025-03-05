@@ -22,6 +22,24 @@ body:
     validations:
       required: true
 
+  - type: input
+    attributes:
+      label: Skript Version
+      description: Which version of Skript are you using?
+      placeholder: |
+        Ex: "2.7.1"
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Server Version/Type
+      description: Which version/type of the server and Minecraft are you using?
+      placeholder: |
+        Ex: "arclight-1.18.2-1.0.9-7a0a1946 (MC: 1.18.2)"
+    validations:
+      required: true
+
   - type: textarea
     id: additional
     attributes:
